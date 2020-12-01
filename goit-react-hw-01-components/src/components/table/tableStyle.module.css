@@ -1,0 +1,23 @@
+.cell {
+  width: 200px;
+  height: 30px;
+  border: 1px solid black;
+}
+
+.head {
+  composes: cell;
+  background-color: cornflowerblue;
+  color: white;
+}
+
+.transactionHistory {
+  margin: 0 auto;
+}
+
+.tableRow {
+  color: grey;
+}
+.rowCell {
+  composes: cell;
+  text-align: center;
+}

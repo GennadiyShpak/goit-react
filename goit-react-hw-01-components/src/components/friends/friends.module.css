@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.status {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.online {
+  composes: status;
+  background-color: green;
+}
+
+.offline {
+  composes: status;
+  background-color: red;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+.avatar {
+  margin-right: 30px;
+}
+.name {
+  font-size: 20px;
+  font-weight: 700;
+}

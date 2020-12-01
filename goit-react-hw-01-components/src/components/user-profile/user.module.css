@@ -1,0 +1,42 @@
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.item {
+  margin-bottom: 10px;
+}
+
+.name {
+  composes: item;
+  background-color: aqua;
+}
+
+.tag {
+  composes: item;
+  background-color: burlywood;
+}
+.location {
+  composes: item;
+  background-color: cornflowerblue;
+}
+
+.statsItem {
+  display: flex;
+  flex-direction: column;
+}
+.stats {
+  margin: 0 auto;
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+}

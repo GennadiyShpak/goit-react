@@ -1,11 +1,13 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import s from './friends.module.css';
 
-function FriendListRender({ isOnline, avatar, name }) {
+function FriendListRender({ status, avatar, name }) {
+  const statusType = status ? s.online : s.offline;
   return (
-    <div>
-      <span className="status">{isOnline}</span>
-      <img className="avatar" src={avatar} alt={name} width="48" />
-      <p className="name">{name}</p>
+    <div className={s.wrapper}>
+      <span className={statusType}></span>
+      <img className={s.avatar} src={avatar} alt={name} width="48" />
+      <p className={s.name}>{name}</p>
     </div>
   );
 }
@@ -13,7 +15,7 @@ function FriendListRender({ isOnline, avatar, name }) {
 FriendListRender.propTypes = {
   avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  isOnline: PropTypes.bool.isRequired,
+  status: PropTypes.oneOf([true, false]).isRequired,
 };
 
 export default FriendListRender;

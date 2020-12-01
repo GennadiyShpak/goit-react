@@ -1,0 +1,26 @@
+.list {
+  display: flex;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  padding: 5px;
+  align-items: center;
+  color: white;
+}
+.item:last-child {
+  background-color: rgb(5, 179, 179);
+}
+.item:first-child {
+  background-color: rgb(70, 182, 247);
+}
+.item:nth-child(2) {
+  background-color: darkorchid;
+}
+.item:nth-child(3) {
+  background-color: rgb(204, 50, 109);
+}
+.item:nth-child(4) {
+  background-color: rgb(39, 7, 19);
+}
