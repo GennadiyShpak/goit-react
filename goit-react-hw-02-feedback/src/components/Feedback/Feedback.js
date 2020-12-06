@@ -17,28 +17,11 @@ class Feedback extends Component {
     precent: this.props.initialValue,
   };
 
-  incrementGoodValue = () => {
+  incrementValue = e => {
+    const name = e.target.name;
     this.setState(prevState => {
       return {
-        good: (prevState.good += 1),
-      };
-    });
-    this.incrementTotalValue();
-    this.incrementPrecentValue();
-  };
-  incrementNeutralValue = () => {
-    this.setState(prevState => {
-      return {
-        neutral: (prevState.neutral += 1),
-      };
-    });
-    this.incrementTotalValue();
-    this.incrementPrecentValue();
-  };
-  incrementBadValue = () => {
-    this.setState(prevState => {
-      return {
-        bad: (prevState.bad += 1),
+        [name]: (prevState[name] += 1),
       };
     });
     this.incrementTotalValue();
@@ -59,20 +42,12 @@ class Feedback extends Component {
   };
 
   render() {
-    const {
-      incrementGoodValue,
-      incrementBadValue,
-      incrementNeutralValue,
-    } = this;
+    const { incrementValue } = this;
     const { good, bad, neutral, total, precent } = this.state;
     return (
       <>
         <Section title="Please leave feedback">
-          <Controls
-            onGood={incrementGoodValue}
-            onBad={incrementBadValue}
-            onNeutral={incrementNeutralValue}
-          />
+          <Controls onLeaveFeedback={incrementValue} />
         </Section>
         <Section title="Statistics">
           {total === 0 ? (
