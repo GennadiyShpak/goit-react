@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Controls from './Controls';
-import Section from './Section';
 import Statistics from './Statistics';
 // import s from './Feedback.module.css';
 
@@ -46,22 +45,17 @@ class Feedback extends Component {
     const { good, bad, neutral, total, precent } = this.state;
     return (
       <>
-        <Section title="Please leave feedback">
-          <Controls onLeaveFeedback={incrementValue} />
-        </Section>
-        <Section title="Statistics">
-          {total === 0 ? (
-            <p>No feedback given</p>
-          ) : (
-            <Statistics
-              good={good}
-              bad={bad}
-              neutral={neutral}
-              total={total}
-              precent={precent}
-            />
-          )}
-        </Section>
+        <Controls
+          onLeaveFeedback={incrementValue}
+          options={['good', 'neutral', 'bad']}
+        />
+        <Statistics
+          good={good}
+          bad={bad}
+          neutral={neutral}
+          total={total}
+          precent={precent}
+        />
       </>
     );
   }

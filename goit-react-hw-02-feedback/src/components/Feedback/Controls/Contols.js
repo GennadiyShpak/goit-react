@@ -1,17 +1,15 @@
+import Section from '../Section';
 import s from './Controls.module.css';
-function Controls({ onLeaveFeedback }) {
+
+function Controls({ onLeaveFeedback, options }) {
   return (
-    <div className={s.feedbackControl}>
-      <button type="button" onClick={onLeaveFeedback} name="good">
-        Good
-      </button>
-      <button type="button" onClick={onLeaveFeedback} name="neutral">
-        Neutral
-      </button>
-      <button type="button" onClick={onLeaveFeedback} name="bad">
-        Bad
-      </button>
-    </div>
+    <Section className={s.feedbackControl} title="Please leave feedback">
+      {options.map(item => (
+        <button key={item} type="button" onClick={onLeaveFeedback} name={item}>
+          {item}
+        </button>
+      ))}
+    </Section>
   );
 }
 
