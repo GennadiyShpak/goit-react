@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import Section from '../Section';
 import s from './Controls.module.css';
 
@@ -12,5 +14,10 @@ function Controls({ onLeaveFeedback, options }) {
     </Section>
   );
 }
+
+Controls.propTypes = {
+  onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default Controls;

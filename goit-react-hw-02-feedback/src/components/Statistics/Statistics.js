@@ -1,10 +1,12 @@
 import Section from '../Section';
 import s from './Statistics.module.css';
+import Notification from '../Notification';
 
 function Statistics({ good, bad, neutral, total, precent }) {
+  console.log(typeof good);
   return (
     <Section title="Statistics">
-      {total === 0 && <p>No feedback given</p>}
+      {total === 0 && <Notification message="No feedback given" />}
       {total > 0 && (
         <ul>
           <li className={s.item}>
