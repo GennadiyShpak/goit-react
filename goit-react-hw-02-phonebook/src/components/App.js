@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 import ContactList from './ContactList';
 import Form from './Form';
 import Filter from './Filter';
-import contactList from './contactList.json';
+import Section from './Section';
+import initialContactList from './initialContactList.json';
 
 class App extends Component {
   state = {
-    contacts: contactList,
+    contacts: initialContactList,
     filter: '',
   };
 
@@ -18,10 +19,18 @@ class App extends Component {
       name,
       number,
     };
+    const arrContactsName = this.state.contacts.map(item => {
+      return item.name.toLowerCase();
+    });
 
-    this.setState(({ contacts }) => ({
-      contacts: [...contacts, contact],
-    }));
+    if (arrContactsName.includes(name.toLowerCase())) {
+      alert(`${name} is already in contacts`);
+      return;
+    } else {
+      this.setState(({ contacts }) => ({
+        contacts: [...contacts, contact],
+      }));
+    }
   };
 
   deleteContact = contactId => {
@@ -45,22 +54,22 @@ class App extends Component {
 
   render() {
     const { filter } = this.state;
-    const {
-      formSubmitHandler,
-      onFilterChange,
-      getFilterName,
-      deleteContact,
-    } = this;
 
-    const visibleContactName = getFilterName();
+    const visibleContactName = this.getFilterName();
 
     return (
       <>
-        <Form onSubmit={formSubmitHandler} />
+        <Section title="Phonebook">
+          <Form onSubmit={this.formSubmitHandler} />
+        </Section>
+        <Section title="Contacts">
+          <Filter filter={filter} onChange={this.onFilterChange} />
 
-        <Filter filter={filter} onChange={onFilterChange} />
-
-        <ContactList contacts={visibleContactName} onDelete={deleteContact} />
+          <ContactList
+            contacts={visibleContactName}
+            onDelete={this.deleteContact}
+          />
+        </Section>
       </>
     );
   }
